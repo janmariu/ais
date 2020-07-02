@@ -2,3 +2,4 @@ packages/
 .vs
 obj/
 bin/
+.vscode/

@@ -7,7 +7,7 @@ namespace Bitbucket.AIS.Parsers
 {
     internal class AisParser
     {
-        public AisMessage DecodeAisString(string armoredString)
+        public static AisMessage DecodeAisString(string armoredString)
         {
             var aisMsg = new AisMessage();
             string binary = DecodeVDXArmoredString(armoredString);
@@ -31,7 +31,7 @@ namespace Bitbucket.AIS.Parsers
             return aisMsg;
         }
 
-        private string DecodeVDXArmoredString(string vdxString)
+        private static string DecodeVDXArmoredString(string vdxString)
         {
             string binarystring = "";
 
