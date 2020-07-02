@@ -7,6 +7,10 @@ namespace Bitbucket.AIS.Parsers
     {
         public static NmeaMessage Parse(string nmea)
         {
+            if(!nmea.StartsWith("!")) {
+                throw new InvalidNmeaException("NMEA AIs string does not start with !xxVDM or !xxVDO");
+            }
+
             var result = new NmeaMessage();
 
             var nmeaparts = nmea.Split(',');

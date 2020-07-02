@@ -21,8 +21,16 @@ namespace AIS.Client
             {
                 var nmeaList = new List<NmeaMessage>();
                 string nmeaString = reader.ReadLine();
-                var nmeaMsg = aisDecoder.GetNmeaMessage(nmeaString);
+                NmeaMessage nmeaMsg;
 
+                try {
+                    nmeaMsg = aisDecoder.GetNmeaMessage(nmeaString);
+                } catch(InvalidNmeaException e) {                    
+                    Console.Error.WriteLine(e.Message);
+                    Console.Error.WriteLine($"Failed message: {nmeaString}");
+                    continue;
+                }
+                
                 nmeaList.Add(nmeaMsg);
 
                 while (nmeaMsg.NumberOfSentences > 1 && nmeaMsg.SentenceNumber != nmeaMsg.NumberOfSentences)
