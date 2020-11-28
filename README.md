@@ -1,4 +1,4 @@
-# ais
+# Bitbucket.AIS
 A .NET library for parsing AIS data.
 
 An example client using live data from the Norwegian coastal administration is included.
