@@ -7,18 +7,15 @@ namespace Bitbucket.AIS.UnitTests
     public class PositionReportTests
     {
         static AisMessage GetAisMsg(string aisstring = "!AIVDM,1,1,,A,14eG;o@034o8sd<L9i:a;WF>062D,0*7D")
-        {
-            var aisDecoder = new AisDecoder();
-            var nmea = aisDecoder.GetNmeaMessage(aisstring);
-            return aisDecoder.GetAisMessage(nmea);
+        {            
+            var nmea = AisDecoder.ParseNmea(aisstring);
+            return AisDecoder.DecodeAis(nmea);
         }
 
         [TestMethod]
         public void Parse_DecodesAsExpected_SOG()
         {
-            Assert.AreEqual(19.6, new AisDecoder().GetAisMessage(
-                new AisDecoder().GetNmeaMessage("!AIVDM,1,1,,A,14eG;o@034o8sd<L9i:a;WF>062D,0*7D"))
-                .PositionReport.Sog);
+            Assert.AreEqual(19.6, GetAisMsg("!AIVDM,1,1,,A,14eG;o@034o8sd<L9i:a;WF>062D,0*7D").PositionReport.Sog);                                
         }
 
         [TestMethod]

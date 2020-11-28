@@ -5,14 +5,14 @@ using System.Collections.Generic;
 
 namespace Bitbucket.AIS
 {
-    public class AisDecoder
+    public static class AisDecoder
     {
-        public NmeaMessage GetNmeaMessage(string nmea)
+        public static NmeaMessage ParseNmea(string nmea)
         {
             return NmeaParser.Parse(nmea);
         }
 
-        public AisMessage GetAisMessage(NmeaMessage nmeaMsg)
+        public static AisMessage DecodeAis(NmeaMessage nmeaMsg)
         {
             if (nmeaMsg.NumberOfSentences > 1)
                 throw new Exception("Multipart message. Use GetAisMessage(List<NmeaMessage>) instead");
@@ -20,7 +20,7 @@ namespace Bitbucket.AIS
             return AisParser.DecodeAisString(nmeaMsg.EncodedPayload);
         }
 
-        public AisMessage GetAisMessage(List<NmeaMessage> nmeaMsg)
+        public static AisMessage DecodeAis(List<NmeaMessage> nmeaMsg)
         {
             var encodedPayload = string.Empty;
             foreach (var msg in nmeaMsg)

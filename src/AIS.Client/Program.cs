@@ -11,8 +11,7 @@ namespace AIS.Client
     {
         private static void Run()
         {
-            Console.ForegroundColor = ConsoleColor.Green;
-            var aisDecoder = new AisDecoder();
+            Console.ForegroundColor = ConsoleColor.Green;            
 
             TcpClient client = new TcpClient("153.44.253.27", 5631);
             NetworkStream networkStream = client.GetStream();
@@ -26,12 +25,12 @@ namespace AIS.Client
 
                 try
                 {
-                    NmeaMessage nmeaMsg = aisDecoder.GetNmeaMessage(nmeaString);
+                    NmeaMessage nmeaMsg = AisDecoder.ParseNmea(nmeaString);
                     nmeaList.Add(nmeaMsg);
 
                     if (nmeaMsg.SentenceNumber == nmeaMsg.NumberOfSentences)
                     {
-                        var aisMsg = aisDecoder.GetAisMessage(nmeaList);
+                        var aisMsg = AisDecoder.DecodeAis(nmeaList);
                         Console.WriteLine(aisMsg.ToString());
                         nmeaList.Clear();
                     }
