@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Bitbucket.AIS.Messages;
+using System;
 using System.Text;
-using Bitbucket.AIS.Messages;
 
 namespace Bitbucket.AIS.Parsers
 {
@@ -15,7 +14,7 @@ namespace Bitbucket.AIS.Parsers
             aisMsg.MessageType = Convert.ToInt32(binary.Substring(0, 6), 2);
             aisMsg.RepeatIndicator = Convert.ToInt32(binary.Substring(6, 2), 2);
             aisMsg.MMSI = Convert.ToInt32(binary.Substring(8, 30), 2);
-            
+
             switch (aisMsg.MessageType)
             {
                 case 1:

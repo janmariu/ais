@@ -52,15 +52,15 @@ namespace Bitbucket.AIS.UnitTests
             //Longitude: 126.611952°
             var msg = GetAisMsg("!AIVDM,1,1,,B,16S`2cPP00a3UF6EKT@2:?vOr0S2,0 * 00");
             Assert.AreEqual(126.611952, msg.PositionReport.Lon, 0.0001);
-            Assert.AreEqual(37.452907, msg.PositionReport.Lat, 0.0001);            
+            Assert.AreEqual(37.452907, msg.PositionReport.Lat, 0.0001);
         }
 
         [TestMethod]
         public void Parse_DecodesAsExpected_LON()
         {
             var msg = GetAisMsg("!AIVDM,1,1,,A,14eG;o@034o8sd<L9i:a;WF>062D,0*7D");
-            Assert.AreEqual(-123.877748,                 
+            Assert.AreEqual(-123.877748,
                 msg.PositionReport.Lon, 0.0001);
-        }        
+        }
     }
 }

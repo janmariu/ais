@@ -12,7 +12,7 @@
         {
             string output = $"MMSI: {MMSI} Type: {MessageType} ";
 
-            switch(MessageType)
+            switch (MessageType)
             {
                 case 1:
                 case 2:

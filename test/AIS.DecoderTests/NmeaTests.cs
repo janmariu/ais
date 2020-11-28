@@ -1,6 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Bitbucket.AIS.Messages;
+﻿using Bitbucket.AIS.Messages;
 using Bitbucket.AIS.Parsers;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Bitbucket.AIS.UnitTests
 {
