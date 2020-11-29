@@ -1,4 +1,5 @@
 ﻿//http://catb.org/gpsd/AIVDM.html#_types_1_2_and_3_position_report_class_a
+using Bitbucket.AIS.Parsers;
 using System;
 
 namespace Bitbucket.AIS.Messages
@@ -50,42 +51,13 @@ namespace Bitbucket.AIS.Messages
                 Rot = Convert.ToInt32(decodedAisString.Substring(42, 8), 2) / 10.0,
                 Sog = Convert.ToInt32(decodedAisString.Substring(50, 10), 2) / 10.0,
                 Accuracy = Convert.ToInt32(decodedAisString.Substring(60, 1), 2),
-                Lon = GetLongitude(decodedAisString.Substring(61, 28)),
-                Lat = GetLatitude(decodedAisString.Substring(89, 27)),
+                Lon = Util.GetLongitude(decodedAisString.Substring(61, 28)),
+                Lat = Util.GetLatitude(decodedAisString.Substring(89, 27)),
                 Cog = Convert.ToInt32(decodedAisString.Substring(116, 12), 2) / 10.0,
                 Hdg = Convert.ToInt32(decodedAisString.Substring(128, 9), 2),
                 Timestamp = Convert.ToInt32(decodedAisString.Substring(137, 6), 2)
                 //137
             };
-        }
-
-        private static double GetLongitude(string binary)
-        {
-            int b = Convert.ToInt32(binary, 2);
-            int tmp = b;
-
-            if (b > 0x7FFFFFF)
-            {
-                tmp = b ^ 0xFFFFFFF;
-                tmp = ~tmp;
-            }
-
-            double result = tmp / 600000.0;
-            return result;
-        }
-
-        private static double GetLatitude(string binary)
-        {
-            int b = Convert.ToInt32(binary, 2);
-            int tmp = b;
-
-            if (b > 0x3FFFFFF)
-            {
-                tmp = b ^ 0xFFFFFFF;
-            }
-
-            double result = tmp / 600000.0;
-            return result;
         }
     }
 }

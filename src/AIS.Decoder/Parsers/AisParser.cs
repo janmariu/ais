@@ -22,6 +22,9 @@ namespace Bitbucket.AIS.Parsers
                 case 3:
                     aisMsg.PositionReport = PositionReport.CreateFromBinary(binary);
                     break;
+                case 4:
+                    aisMsg.BaseStationReport = BaseStationReport.CreateFromBinary(binary);
+                    break;
                 case 5:
                     aisMsg.VoygageReport = VoyageReport.CreateFromBinary(binary);
                     break;

@@ -3,7 +3,7 @@ A .NET library for parsing AIS data.
 
 An example client using live data from the Norwegian coastal administration is included.
 
-Currently supports message types: 1,2,3 - Position Report Class A, 5 - Static and Voyage Related Data. Pull requests for other types are welcome.
+Currently supports message types: 1,2,3 - Position Report Class A,4 - Base Station Report, 5 - Static and Voyage Related Data. Pull requests for other types are welcome.
 
 ## Usage
 AIS is a two-layer protocol. The outer layer is a NMEA message with an armoured string payload. 
