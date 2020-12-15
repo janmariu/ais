@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "AIS.CommandLine": {
+      "commandName": "Executable",
+      "executablePath": "C:\\work\\ais\\src\\AIS.CommandLine\\debug.bat",
+      "workingDirectory": "C:\\work\\ais\\src\\AIS.CommandLine"
+    }
+  }
+}
