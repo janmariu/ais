@@ -5,7 +5,6 @@ namespace Bitbucket.AIS.Messages
 {
     public class BaseStationReport
     {
-        public DateTime Received { get; set; }
         public int Year { get; set; }
         public int Month { get; set; }
         public int Day { get; set; }
@@ -31,7 +30,6 @@ namespace Bitbucket.AIS.Messages
 
             return new BaseStationReport()
             {
-                Received = DateTime.Now,
                 Year = Convert.ToInt32(binary.Substring(38, 14), 2),
                 Month = Convert.ToInt32(binary.Substring(52, 4), 2),
                 Day = Convert.ToInt32(binary.Substring(56, 5), 2),
@@ -49,8 +47,7 @@ namespace Bitbucket.AIS.Messages
 
         public override string ToString()
         {
-            return $"Received: {Received.ToString("yyyy-MM-dd HH:mm:ss")} " +
-                $"Timestamp: {Year}-{Month}-{Day} {Hour}:{Minute}:{Seconds} " +
+            return  $"Timestamp: {Year}-{Month}-{Day} {Hour}:{Minute}:{Seconds} " +
                 $"FixQuality: {FixQuality} " +
                 $"Latitude: {Latitude} " +
                 $"Longitude: {Longitude} " +

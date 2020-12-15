@@ -1,4 +1,6 @@
-﻿namespace Bitbucket.AIS.Messages
+﻿using System;
+
+namespace Bitbucket.AIS.Messages
 {
     public class AisMessage
     {
@@ -8,6 +10,7 @@
         public BaseStationReport BaseStationReport { get; set; }
         public int MessageType { get; set; }
         public int RepeatIndicator { get; set; }
+        public DateTime Parsed { get; set; }
 
         public override string ToString()
         {

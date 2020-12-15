@@ -8,8 +8,6 @@ namespace Bitbucket.AIS.Messages
     {
         public Int32 MMSI { get; set; }
 
-        public DateTime Received { get; set; }
-
         public Int32 Accuracy { get; set; }
 
         public Int32 NavigationStatus { get; set; }
@@ -30,7 +28,7 @@ namespace Bitbucket.AIS.Messages
 
         public override string ToString()
         {
-            return $"Received: {Received.ToString("yyyy-MM-dd HH:mm:ss")} SOG: {Sog}, HDG {Hdg}, LAT {Lat}, LON: {Lon}";
+            return $"SOG: {Sog}, HDG {Hdg}, LAT {Lat}, LON: {Lon}";
         }
 
         public static PositionReport CreateFromBinary(string decodedAisString)
@@ -45,7 +43,6 @@ namespace Bitbucket.AIS.Messages
 
             return new PositionReport()
             {
-                Received = DateTime.Now,
                 MMSI = Convert.ToInt32(decodedAisString.Substring(8, 30), 2),
                 NavigationStatus = Convert.ToInt32(decodedAisString.Substring(38, 4), 2),
                 Rot = Convert.ToInt32(decodedAisString.Substring(42, 8), 2) / 10.0,

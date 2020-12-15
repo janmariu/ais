@@ -5,8 +5,6 @@ namespace Bitbucket.AIS.Messages
 {
     public class VoyageReport
     {
-        public DateTime Received { get; set; }
-
         public Int32 MMSI { get; set; }
         public int AISVersion { get; set; }
         public Int32 IMO { get; set; }
@@ -27,7 +25,7 @@ namespace Bitbucket.AIS.Messages
 
         public override string ToString()
         {
-            return $"Received: {Received.ToString("yyyy-MM-dd HH:mm:ss")} IMO: {IMO} Name: {Name} Callsign: {Callsign} Destination: {Destination}";
+            return $"IMO: {IMO} Name: {Name} Callsign: {Callsign} Destination: {Destination}";
         }
 
         public static VoyageReport CreateFromBinary(string binary)
@@ -42,7 +40,6 @@ namespace Bitbucket.AIS.Messages
 
             return new VoyageReport()
             {
-                Received = DateTime.Now,
                 MMSI = Convert.ToInt32(binary.Substring(8, 30), 2),
                 AISVersion = Convert.ToInt32(binary.Substring(38, 2), 2),
                 IMO = Convert.ToInt32(binary.Substring(40, 30), 2),

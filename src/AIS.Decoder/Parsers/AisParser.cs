@@ -9,6 +9,8 @@ namespace Bitbucket.AIS.Parsers
         public static AisMessage DecodeAisString(string armoredString)
         {
             var aisMsg = new AisMessage();
+            aisMsg.Parsed = DateTime.Now;
+            
             string binary = DecodeVDXArmoredString(armoredString);
 
             aisMsg.MessageType = Convert.ToInt32(binary.Substring(0, 6), 2);
